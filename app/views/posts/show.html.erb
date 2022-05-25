@@ -1,0 +1,39 @@
+<div class="card mb-4 rounded-3 shadow-sm">
+  <div class="card-body">
+    <h1> <%= @post.title %> </h1>
+    <p> <%= @post.body %> </p>
+    <hr>
+    <%= link_to "Edit", edit_post_path(@post), :class => "btn btn-lg btn-outline-primary" %>
+    <%= 
+      link_to "Delete", post_path(@post), method: :delete, 
+      data: {confirm: "Delete post?"}, :class => "btn btn-secondary btn-lg btn-outline-primary" 
+    %>
+    <hr>
+    <div class="card-body">
+      
+      <h3> Comments </h3>
+      <% @post.comments.each do |comment| %>
+        <div class="card mb-2 rounded-5 shadow-sm">
+          <div class="card-body">
+            <p> <b> <%= comment.username %> </b> <%= comment.body %> </p>
+          </div>
+        </div>
+      <% end %>
+      <hr>
+    
+      <%= form_for([@post, @post.comments.build]) do |f| %>   
+        <p>
+            User <br>
+            <%= f.text_field(:username, {:class => 'form-control'}) %>
+        </p>  
+        <p>
+            Comment <br>
+            <%= f.text_area(:body, {:class => 'form-control'}) %>
+        </p>  
+        <p>
+            <%= f.submit("Send", {:class => 'btn btn-success'}) %> <!-- submit calls create method -->
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
