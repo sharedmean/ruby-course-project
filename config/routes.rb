@@ -17,11 +17,12 @@ Rails.application.routes.draw do
   # get - all other pages
 
   get 'about' => 'pages#about', as: 'about'
-
+  get 'profile/:id' => 'pages#profile', as: 'profile'
+  #resources :profile
   # resources allows to track all the controller's actions (GET, DELETE, ...)
-
-  resources :posts do
-    resources :comments # allows to have routes like 'post/1/comment/5' 
+  
+  resources :posts do # wrote all just in case :)
+    resources :comments, only: [:create, :destroy] # allows to have routes like 'post/1/comment/5' 
   end
 end
 

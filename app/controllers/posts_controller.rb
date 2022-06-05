@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @post = Post.all
+    @post = Post.all.limit(50).order(id: :desc)
   end
 
   def new # if you wanna check all actions from resources: 'rake routes'
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if(@post.update(post_params))
-      redirect_to @post # calls 'show'
+      redirect_to post_path(@post) # calls 'show'
     else
       render 'edit' # rerender the current page
     end
@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     if(@post.save)
       redirect_to @post # calls 'show'
@@ -43,6 +44,6 @@ class PostsController < ApplicationController
   end
 
   private def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :picture)
   end
 end

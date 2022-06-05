@@ -13,3 +13,66 @@
  *= require_tree .
  *= require_self
  */
+
+  body {
+    background: url('/assets/15.jpg') !important; /* 7,9,10,14,15 images are good */
+    background-size: contain !important;
+  }
+  .no-decoration {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    vertical-align: middle;
+    font-weight: 500;
+  }  
+  
+  .no-decoration:hover {
+    color: #ee538d;
+  }
+
+  .text {
+    font-size: 24px;
+    color: #ee538d;
+    text-decoration: none;
+    margin-left:30px;
+  }
+  
+  .search {
+    width:30%;
+  }
+
+  .btn-outline-pink {
+    color: #ee538d;
+    border-color: #ee538d;
+    margin-right: 20px;
+  }
+
+  .btn-outline-pink:hover {
+    color: white;
+    background-color: #ee538d;
+  }
+
+  .btn-pink {
+    color: black;
+    background-color: #ee538d;
+    margin-right: 20px;
+    border-color: #ee538d;
+  }
+
+  .btn-pink:hover {
+    border-color: black;
+  }
+
+  .content {
+    max-width: 900px !important;
+  }
+
+  .content-img {
+    max-width: 840px !important;
+    border-radius:3px;
+  }
+
+  .content-img-profile {
+    max-width: 270px !important;
+    border-radius:3px;
+  }

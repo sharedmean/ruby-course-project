@@ -1,0 +1,20 @@
+<div class="card mb-4 rounded-3 shadow-sm">
+  <div class="card-body">
+    <h3> My posts </h3>
+    <hr>
+    <%=  %>
+    <div class="card-body">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @post.each do |post| %>
+          <div class="col">
+            <%= link_to post_path(post) do %>
+                <%= image_tag post.picture.url(:large), class: 'content-img-profile img-show', alt: post.title if post.picture? %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+    
+    </div>
+  </div>
+</div>
