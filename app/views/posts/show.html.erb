@@ -9,24 +9,25 @@
     </p>  
     <p><%= image_tag @post.picture.url(:large), class: 'content-img img-show', alt: @post.title if @post.picture? %></p>
     <p> <%= @post.body %> </p>
-    <hr>
-    <%= link_to "Edit", edit_post_path(@post), :class => "btn btn-lg btn-outline-pink" %>
-    <%= 
-      link_to "Delete", post_path(@post), method: :delete, 
-      data: {confirm: "Delete post?"}, :class => "btn btn-lg btn-pink" 
-    %>
+    <% if user_signed_in? %>
+      <% if current_user.id==User.find(@post.user_id).id %>
+        <hr>
+        <%= link_to "Edit", edit_post_path(@post), :class => "btn btn-lg btn-outline-pink" %>
+        <%= 
+          link_to "Delete", post_path(@post), method: :delete, 
+          data: {confirm: "Delete post?"}, :class => "btn btn-lg btn-pink" 
+        %>
+      <% end %>
+    <% end %>
     <hr>
     <div class="card-body">
-      
-      <h3> Comments </h3>
       <% @post.comments.each do |comment| %>
         <div class="card mb-2 rounded-5 shadow-sm">
-          <div class="card-body">
-            <p> <b> <%= User.find(comment.user_id).username %> </b> <%= comment.body %> </p>
+          <div style="padding:10px">
+            <p> <%= link_to User.find(comment.user_id).username, profile_path(User.find(comment.user_id).id), class: "comments" %>  <%= comment.body %> </p>
           </div>
         </div>
       <% end %>
-      <hr>
     
       <%= form_with model: @post.comments.build, url: [@post, @post.comments.build] do |f| %>   
       <!--  <p>
@@ -39,7 +40,7 @@
             <%= f.text_area(:body, {:class => 'form-control'}) %>
         </p>  
         <p>
-            <%= f.submit("Send", {:class => 'btn btn-success'}) %> <!-- submit calls create method -->
+            <%= f.submit("Send", {:class => 'btn btn-lg btn-outline-pink'}) %> <!-- submit calls create method -->
         </p>
       <% end %>
     </div>

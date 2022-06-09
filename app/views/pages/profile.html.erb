@@ -1,8 +1,22 @@
 <div class="card mb-4 rounded-3 shadow-sm">
-  <div class="card-body">
-    <h3> My posts </h3>
-    <hr>
-    <%=  %>
+  <div class="card-body">  
+    <p class="text text-center fw-bold ">
+      <span> <%= User.find(params[:id]).username %> </span>
+    </p> 
+    <div class="row">
+      <div class="col-lg-4 profile-circle">
+        <h2 class="fw-normal text-center"><%= @post.size %></h2>
+        <p class="text-center">posts</p>
+      </div> 
+      <div class="col-lg-4 profile-circle">
+        <h2 class="fw-normal text-center"><%= @post.size %></h2>
+        <p class="text-center">posts</p>
+      </div>
+      <div class="col-lg-4 profile-circle">
+        <h2 class="fw-normal text-center"><%= @post.size %></h2>
+        <p class="text-center">posts</p>
+      </div>
+    </div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <% @post.each do |post| %>

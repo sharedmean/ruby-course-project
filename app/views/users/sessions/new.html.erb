@@ -1,27 +1,29 @@
-<div class="col-md-6 col-md-push-3">
-  <center><h2>Sign in</h2></center>
-  <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
+<div class="card mb-4 rounded-3 shadow-sm">
+  <div class="card-body">
+      <center><h2>Sign in</h2></center>
+      <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
 
-    <p>
-      Email: <br>
-      <%= f.email_field :email, :class => 'form-control' %>
-    </p>
-    <p>
-      Password: <br>
-      <%= f.password_field :password, :class => 'form-control' %>
-    </p>
-    
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
+        <p>
+          Email: <br>
+          <%= f.email_field :email, :class => 'form-control' %>
+        </p>
+        <p>
+          Password: <br>
+          <%= f.password_field :password, :class => 'form-control' %>
+        </p>
+        
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
 
-    <div class="actions">
-      <%= f.submit "Log in", class: "btn btn-large btn-success" %>
-    </div>
-  <% end %>
+        <div class="actions">
+          <%= f.submit "Log in", class: "btn btn-lg btn-outline-pink" %>
+        </div>
+      <% end %>
 
-  <%= render "users/shared/links" %>
-</div>  
+      <%= render "users/shared/links" %>
+  </div>
+</div>

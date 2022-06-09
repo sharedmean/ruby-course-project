@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-
+    @post.picture.remove!
     @post.destroy
     redirect_to home_path # home_path == posts_path
   end

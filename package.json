@@ -1,5 +1,7 @@
 {
   "name": "insta",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap-icons": "^1.8.3"
+  }
 }
