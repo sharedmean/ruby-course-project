@@ -50,6 +50,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    Post.last.id+1 if original_filename
+    random_token = Digest::SHA2.hexdigest("#{Time.now.utc}").first(20)
+    "#{random_token}.jpg" if original_filename
   end
 end

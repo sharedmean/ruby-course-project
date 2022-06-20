@@ -28,5 +28,6 @@ Rails.application.routes.draw do
 
   # I don't put likes under :posts like :comments because maybe I'll need to make likes polymorphic(Ex. likes to comments)
   resources :likes, only: [:create, :destroy]
+  resources :follows, only: [:create, :destroy]
 end
 

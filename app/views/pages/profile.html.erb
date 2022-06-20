@@ -1,24 +1,90 @@
 <div class="card mb-4 rounded-3 shadow-sm">
   <div class="card-body">  
-    <p class="text text-center fw-bold ">
-      <span> <%= User.find(params[:id]).username %> </span>
-    </p> 
-    <div class="row">
-      <div class="col-lg-4 profile-circle">
-        <h2 class="fw-normal text-center"><%= @post.size %></h2>
-        <p class="text-center">posts</p>
-      </div> 
-      <div class="col-lg-4 profile-circle">
-        <h2 class="fw-normal text-center"><%= @post.size %></h2>
-        <p class="text-center">posts</p>
-      </div>
-      <div class="col-lg-4 profile-circle">
-        <h2 class="fw-normal text-center"><%= @post.size %></h2>
-        <p class="text-center">posts</p>
-      </div>
-    </div>
+      <% user =  User.find(params[:id]) %>
+        <div class="row" >
+          <div class="col-lg-3 text-start">
+            <% if user.avatar.url.nil? %>
+              <p class="avatar-show avatar-show-big">
+                No avatar
+              </p>
+            <% else %>
+              <p>
+                <%= image_tag user.avatar.url(:large), class: 'avatar-show avatar-show-big'%>
+              </p>
+            <% end %>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-md-5 text-end">
+                <span class="profile-name"> 
+                  <%= user.username %> 
+                </span>
+              </div>
+              <% if !(current_user.id==user.id) %>
+                <div class="col-lg-7 text-start">
+                  <% follow = current_user.following_follows.find_by(following_id: user.id) %>
+                  <% if follow.nil? %>
+                    <%= form_with model: @follow, url: follows_path do |f| %>   
+                      <input type="hidden" name="follow[following_id]" value="<%= user.id %>">
+                      <input type="hidden" name="follow[follower_id]" value="<%= current_user.id %>">
+                      <div class="col-lg-5 text-start">
+                        <%= button_tag( :class => "btn btn-lg btn-outline-pink") do %>
+                          Follow
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <div class="col-lg-5 text-start">
+                      <%= link_to follow_path(follow.following_id), method: :delete, remote: true, class: "btn btn-lg btn-outline-pink" do %>
+                        Unfollow 
+                      <% end %>   
+                    </div>
+                  <% end %>
+                </div>
+              <% else %>  
+                <div class="col-lg-5 text-start">
+                  <button type="button" class="btn btn-lg btn-outline-pink">
+                    <%= link_to 'Edit profile', edit_user_registration_path %>
+                  </button>
+                </div>
+              <% end %>
+            </div>
+            <hr> 
+            <div class="row" style="margin-top:30px; margin-bottom:30px;">
+              <div class="col-lg-4 profile-circle">      
+                <p class="text-center">
+                  <i class="bi-bookmark-heart" style="font-style: normal; font-size:24px;"> 
+                    <%= user.following_follows.size %>
+                  </i>
+                  <br>
+                  followings
+                </p>
+              </div>
+              <div class="col-lg-4 profile-circle">
+                <p class="text-center">
+                  <i class="bi-instagram" style="font-style: normal; font-size:24px;"> 
+                    <%= @post.size %>
+                  </i> 
+                  <br>
+                  posts
+                </p>
+              </div>
+              <div class="col-lg-4 profile-circle">
+                <p class="text-center">
+                  <i class="bi-person-check" style="font-style: normal; font-size:24px;"> 
+                    <%= user.follower_follows.size %>
+                  </i>
+                  <br>
+                  followers
+                </p>
+              </div>
+            </div>  
+          </div>
+        </div>
+    <hr> 
+    
     <div class="card-body">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-2">
         <% @post.each do |post| %>
           <div class="col">
             <%= link_to post_path(post) do %>

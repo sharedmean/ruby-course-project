@@ -4,6 +4,6 @@ class PagesController < PostsController
     end
 
     def profile
-        @post = Post.where(user_id: params[:id]).order(id: :desc)
+        @post = Post.includes(:user).where(user_id: params[:id]).order(id: :desc)
     end
 end

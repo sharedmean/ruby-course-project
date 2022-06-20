@@ -6,13 +6,21 @@ class LikesController < ApplicationController
       flash[:notice] = @like.errors.full_messages.to_sentence
     end
 
-    redirect_to posts_path
+    respond_to do |format|
+      format.js { render inline: "location.reload();" }
+    end 
   end
   
   def destroy
+    
     @like = current_user.likes.find(params[:id])
+    likeable = @like.post
     @like.destroy
-    redirect_to posts_path
+    
+    respond_to do |format|
+      format.js { render inline: "location.reload();" }
+    end 
+    
   end
 
   private def like_params

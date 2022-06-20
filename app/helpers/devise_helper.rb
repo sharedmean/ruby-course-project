@@ -4,7 +4,7 @@ module DeviseHelper
     messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
 
     # Il8n - json translation module
-    sentence = Il8n.t("errors.messages.not_saved",
+    sentence = I18n.t("errors.messages.not_saved",
                         count: resource.errors.count,
                         resource: resource.class.model_name.human.downcase)
     html = <<-HTML
