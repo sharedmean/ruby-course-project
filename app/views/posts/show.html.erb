@@ -1,10 +1,13 @@
 <div class="card mb-4 rounded-3 shadow-sm">
   <div class="card-body">
     <p class="fw-bold">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="#ee538d" class="bi bi-person-circle me-sm-1" viewBox="0 0 16 16">
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-      </svg>
+      <% if @post.user.avatar.url.nil? %>
+        <%= text_field_tag "", 'No avatar', class: 'avatar-show avatar-show-small' %>
+      <% else %>
+        <span>
+          <%= image_tag @post.user.avatar.url(:large), class: 'avatar-show avatar-show-small'%>
+        </span>
+      <% end %>
       <%= link_to @post.user.username, profile_path(@post.user.id), class: "no-decoration" %> 
     </p>  
     <p><%= image_tag @post.picture.url(:large), class: 'content-img img-show', alt: @post.title if @post.picture? %></p>
@@ -24,17 +27,22 @@
       <% @post.comments.each do |comment| %>
         <div class="card mb-2 rounded-5 shadow-sm">
           <div style="padding:10px">
-            <p> <%= link_to User.find(comment.user_id).username, profile_path(User.find(comment.user_id).id), class: "comments" %>  <%= comment.body %> </p>
+            <% user = User.find(comment.user_id) %>
+            <p> 
+              <% if user.avatar.url.nil? %>
+                <%= text_field_tag "", 'No avatar', class: 'avatar-show avatar-show-small' %>
+              <% else %>
+                <span>
+                  <%= image_tag user.avatar.url(:large), class: 'avatar-show avatar-show-small'%>
+                </span>
+              <% end %>
+              <%= link_to user.username, profile_path(user.id), class: "comments" %>  <%= comment.body %> 
+            </p>
           </div>
         </div>
       <% end %>
     
       <%= form_with model: @post.comments.build, url: [@post, @post.comments.build] do |f| %>   
-      <!--  <p>
-            User <br>
-            <%= f.text_field(:username, {:class => 'form-control'}) %>
-        </p>  
-      -->
         <p>
             Comment <br>
             <%= f.text_area(:body, {:class => 'form-control'}) %>

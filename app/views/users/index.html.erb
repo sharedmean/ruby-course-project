@@ -1,0 +1,20 @@
+<div class="card mb-4 rounded-3 shadow-sm">
+  <div class="card-body">   
+    <center class="profile-name"> 
+      Search results
+    </center>   
+    <hr>
+    <% @users.each do |user| %>
+      <p> 
+        <% if user.avatar.url.nil? %>
+            <%= text_field_tag "", 'No avatar', class: 'avatar-show avatar-show-small' %>
+          <% else %>
+            <span>
+              <%= image_tag user.avatar.url(:large), class: 'avatar-show avatar-show-small'%>
+            </span>
+          <% end %>
+          <%= link_to user.username, profile_path(user.id), class: "no-decoration" %>  
+        <% end %>
+      </p>
+  </div>
+</div>

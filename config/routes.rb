@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'signup' =>  'users/registrations#new'
     get 'signin' =>  'users/sessions#new'
     get 'signout' => 'users/sessions#destroy'
+    get 'search' => 'users#index'
   end
 
   # root is only a main page
