@@ -15,8 +15,14 @@
  */
 
   body {
-    background: url('/assets/16.jpg') !important; /* 7,9,10,14,15 images are good */
-    background-size: 2000px auto !important;
+    background: url('/assets/69.jpg') !important; /* 7,9,10,14,15, 55, 56, 65 images are good */
+    background-size: 1920px auto !important;
+  }
+  .header {
+  background-color: #ffffffda;
+  border-radius: 5px;
+  padding-left: 20%;
+  padding-right: 20%
   }
   .text-center {
     text-align: center;
@@ -66,7 +72,7 @@
     font-size: 18px;
     vertical-align: middle;
     font-weight: 500;
-  }  
+  } 
   .comments {
     text-decoration: none;
     color: #ee538d;
@@ -84,16 +90,22 @@
     width:300px !important;
     display: inline !important;
     margin-top:20px;
-    margin-right:10px;
+    margin-right:0px;
     height: 40px;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     color: #ee538d;
-    border-color: #ee538d;
+    border: 2px solid  #ee538d;
+    text-align: center;
   }
   .search-button{
     height: 40px;
-    margin: 0 auto;
-    padding-top: 3px;
+    margin-top:20px;
+    padding-top: 2px;
+  }
+  .search-button:hover{
+    background-color: white;
+    border: 2px solid  #ee538d !important;
+    color: #ee538d;
   }
   .btn-outline-pink {
     color: #ee538d;
@@ -143,7 +155,9 @@
     margin-bottom:20px;
     text-align:center;
   }
-
+  .card {
+    background-color: #fffffff1 !important;
+  }
   .no-border{
     border: none !important;
   }

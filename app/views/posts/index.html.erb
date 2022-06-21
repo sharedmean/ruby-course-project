@@ -1,66 +1,84 @@
-<% @posts.each do |post| %>
+
+<% if @posts.empty? %>
   <div class="card mb-4 rounded-3 shadow-sm">
     <div class="card-body">
-      <p class="fw-bold">
-        <% if post.user.avatar.url.nil? %>
-          <%= text_field_tag "", 'No avatar', class: 'avatar-show avatar-show-small' %>
-        <% else %>
-          <span>
-            <%= image_tag post.user.avatar.url(:large), class: 'avatar-show avatar-show-small'%>
-          </span>
-        <% end %>
-        <%= link_to post.user.username, profile_path(post.user.id), class: "no-decoration" %>   
-      </p>    
-      <p><%= image_tag post.picture.url(:large), class: 'content-img img-show', alt: post.title if post.picture? %></p>
-      <p> <%= post.body %> </p>
-      
-      <hr>
-      <div class="row">
-        <div class="col-md-1 text-start">
-          <%= link_to post_path(post), class: "btn btn-lg btn-outline-pink" do %>
-            <i class="bi-eye" ></i>  
-          <% end %>
-        </div>
-      
-        <div class="col-md-1 text-start">
-          <% like = current_user.likes.find_by(post: post) %>
-          <% if like.nil? %>
-            <%= form_with model: @like, url: likes_path do |f| %>   
-              <input type="hidden" name="like[post_id]" value="<%= post.id %>">
-              <%= hidden_field :like, { :value => @like } %>
-              <div class="row">
-                <%= button_tag( :class => "btn btn-lg btn-outline-pink") do %>
-                  <i class="bi-heart" style="font-style: normal"> 
-                    <%= Like.where(post_id: post.id).count %> 
-                  </i>
-                <% end %>
-              </div>
-            <% end %>
-          <% else %>
-            <div class="row">
-              <%= link_to like_path(like), method: :delete, remote: true, class: "btn btn-lg btn-outline-pink" do %>
-                <i class="bi-heart-fill" style="font-style: normal">
-                  <%= Like.where(post_id: post.id).count %>
-                </i>  
-              <% end %>   
-            </div>
-          <% end %>
-        </div>
-        <% if policy(post).edit? %>
-          <div class="col-md-1 text-start">
-            <%= link_to edit_post_path(post), class: "btn btn-lg btn-outline-pink" do %>
-              <i class="bi-pen" ></i>  
-            <% end %>
-          </div>
-          <div class="col-md-1 text-start">
-            <%= link_to post_path(post),method: :delete, 
-            data: {confirm: "Delete post?"}, class: "btn btn-lg btn-outline-pink" do %>
-              <i class="bi-trash" ></i>  
-            <% end %>
-          </div>
-        <% end%>
-      
-      </div>
+      <center class="profile-name"> 
+        <span style="font-family: cursive; font-size: 45px">Welcome to <b> PinkSta </b> !</span> <br>
+        <span style="font-size:20px"> 
+          You don't have your feed yet, but it's easy to fix! <br> <br>
+          Click on Search icon above to see all <b style="font-family: cursive; font-size: 30px"> PinkSta </b> users <br>
+          or <br>
+          Enter the username of your friend in the text field and then click Search icon <br><br>
+          <span style="font-family: cursive; font-size: 45px">Have fun in <b> PinkSta </b> !</span> <br>
+        </span>
+      </center>
     </div>
   </div>
+<% else %>
+  <% @posts.each do |post| %>
+    <div class="card mb-4 rounded-3 shadow-sm">
+      <div class="card-body">
+        <p class="fw-bold">
+          <% if post.user.avatar.url.nil? %>
+            <%= text_field_tag "", 'No avatar', class: 'avatar-show avatar-show-small' %>
+          <% else %>
+            <span>
+              <%= image_tag post.user.avatar.url(:large), class: 'avatar-show avatar-show-small'%>
+            </span>
+          <% end %>
+          <%= link_to post.user.username, profile_path(post.user.id), class: "no-decoration" %>   
+        </p>    
+        <p><%= image_tag post.picture.url(:large), class: 'content-img img-show', alt: post.title if post.picture? %></p>
+        <p> <%= post.body %> </p>
+        
+        <hr>
+        <div class="row">
+          <div class="col-md-1 text-start">
+            <%= link_to post_path(post), class: "btn btn-lg btn-outline-pink" do %>
+              <i class="bi-chat" ></i>  
+            <% end %>
+          </div>
+        
+          <div class="col-md-1 text-start">
+            <% like = current_user.likes.find_by(post: post) %>
+            <% if like.nil? %>
+              <%= form_with model: @like, url: likes_path do |f| %>   
+                <input type="hidden" name="like[post_id]" value="<%= post.id %>">
+                <%= hidden_field :like, { :value => @like } %>
+                <div class="row">
+                  <%= button_tag( :class => "btn btn-lg btn-outline-pink") do %>
+                    <i class="bi-heart" style="font-style: normal"> 
+                      <%= Like.where(post_id: post.id).count %> 
+                    </i>
+                  <% end %>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="row">
+                <%= link_to like_path(like), method: :delete, remote: true, class: "btn btn-lg btn-outline-pink" do %>
+                  <i class="bi-heart-fill" style="font-style: normal">
+                    <%= Like.where(post_id: post.id).count %>
+                  </i>  
+                <% end %>   
+              </div>
+            <% end %>
+          </div>
+          <% if policy(post).edit? %>
+            <div class="col-md-1 text-start">
+              <%= link_to edit_post_path(post), class: "btn btn-lg btn-outline-pink" do %>
+                <i class="bi-pen" ></i>  
+              <% end %>
+            </div>
+            <div class="col-md-1 text-start">
+              <%= link_to post_path(post),method: :delete, 
+              data: {confirm: "Delete post?"}, class: "btn btn-lg btn-outline-pink" do %>
+                <i class="bi-trash" ></i>  
+              <% end %>
+            </div>
+          <% end%>
+        
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>

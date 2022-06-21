@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:user).all.limit(50).order(id: :desc)
+    # select * from posts where post.user_id
+    follows = current_user.following_follows.select('following_id')
+    @posts = Post.includes(:user).where("user_id in (?)", follows).limit(50).order(id: :desc)
+    # @posts = Post.includes(:user).all.limit(50).order(id: :desc)
   end
 
   def new # if you wanna check all actions from resources: 'rake routes'
