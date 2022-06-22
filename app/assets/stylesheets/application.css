@@ -13,18 +13,25 @@
  *= require_tree .
  *= require_self
  */
-
+  @media (max-width: 600px) {
+    .header {
+      padding: 0px !important;
+    }
+  }
+  @media (min-width: 600px) {
+    .header {
+      background-color: #fffffff1;
+      border-radius: 5px;
+      padding-left: 20%;
+      padding-right: 20%
+      }
+  }
   body {
     /* 16, 79 are for dark theme */
     background: url('https://github.com/sharedmean/ruby-course-project/blob/master/app/assets/images/86.jpg?raw=true') !important; /* 7,9,10,14,15, 55, 56, 65, 69, 73, 766, 86 images are good */
     background-size: 1920px auto !important;
   }
-  .header {
-  background-color: #fffffff1;
-  border-radius: 5px;
-  padding-left: 20%;
-  padding-right: 20%
-  }
+  
   .text-center {
     text-align: center;
   }
@@ -172,8 +179,4 @@
     margin: 0px !important;
   }
   
-  @media (max-width: 480px) {
-    .header {
-      padding: 0px !important;
-      }
-   }
+ 
