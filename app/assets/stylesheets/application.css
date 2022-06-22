@@ -16,7 +16,7 @@
  
   body {
     /* 16, 79 are for dark theme */
-    background: url('/assets/86.jpg') !important; /* 7,9,10,14,15, 55, 56, 65, 69, 73, 766, 86 images are good */
+    background: url('https://github.com/sharedmean/ruby-course-project/blob/master/app/assets/images/86.jpg?raw=true') !important; /* 7,9,10,14,15, 55, 56, 65, 69, 73, 766, 86 images are good */
     background-size: 1920px auto !important;
   }
   .header {
