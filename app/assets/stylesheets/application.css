@@ -28,8 +28,9 @@
   }
   body {
     /* 16, 79 are for dark theme */
-    background: url('https://github.com/sharedmean/ruby-course-project/blob/master/app/assets/images/86.jpg?raw=true') !important; /* 7,9,10,14,15, 55, 56, 65, 69, 73, 766, 86 images are good */
-    background-size: 1920px auto !important;
+    /* background: url('https://github.com/sharedmean/ruby-course-project/blob/master/app/assets/images/56.jpg?raw=true') !important; /* 7,9,10,14,15, 55, 56, 65, 69, 73, 766, 86 images are good */
+    background: rgba(0, 0, 0, 0) linear-gradient(to right, rgb(218, 226, 248), rgb(214, 164, 164)) repeat scroll 0% 0%;
+        /* background-size: 1920px auto !important;*/
   }
 
    /* avatars */
@@ -38,8 +39,6 @@
     border: 1px solid #ee538d;
     text-align: center;
     color: #ee538d;
-    vertical-align: middle;
-    display: table-cell;
     font-family: cursive;  
     background-color: #ee538c46;
   }
@@ -53,6 +52,9 @@
     width:200px;
     height: 200px;
     font-size:30px;
+  }
+  .no-avatar {
+    padding-top: 40%;
   }
 
   .text-center {
@@ -123,7 +125,7 @@
     height: 40px;
     background-color: rgb(255, 255, 255);
     color: #ee538d;
-    border: 2px solid  #ee538d;
+    border: 1px solid  #ee538d;
     text-align: center;
   }
   .search-button{
@@ -161,6 +163,12 @@
   .btn-pink:hover {
     border-color: black;
   }
+  .exit-icon {
+    padding: 3px 17px 2px 9px;
+  }
+  .profile-add-icons{
+    padding: 3px 14px 3px 14px;
+  }
 
   /* content */
   .content {
@@ -173,6 +181,11 @@
   .content-img-profile {
     max-width: 270px !important;
     border-radius:3px;
+  }
+
+  /* logo */
+  .logo {
+    margin-left: 10px;
   }
 
   /* other */
@@ -194,5 +207,7 @@
   }
   .no-margin{
     margin: 0px !important;
+    position: absolute;
+    right: 10px;
   }
   

@@ -1,14 +1,7 @@
 <div class="card mb-4 rounded-3 shadow-sm">
   <div class="card-body">
     <p class="fw-bold">
-      <% if @post.user.avatar.url.nil? %>
-        <%= text_field_tag "", 'No avatar', class: 'avatar-show avatar-show-small' %>
-      <% else %>
-        <span>
-          <%= image_tag @post.user.avatar.url(:large), class: 'avatar-show avatar-show-small'%>
-        </span>
-      <% end %>
-      <%= link_to @post.user.username, profile_path(@post.user.id), class: "no-decoration" %> 
+      <%= render 'profile_link', user: @post.user %>
     </p>  
     <p><%= image_tag @post.picture.url(:large), class: 'content-img img-show', alt: @post.title if @post.picture? %></p> 
     <b> <%= @post.title %> </b> 
@@ -62,24 +55,16 @@
           <div style="padding:10px">
             <% user = User.find(comment.user_id) %>
             <p> 
-              <% if user.avatar.url.nil? %>
-                <%= text_field_tag "", 'No avatar', class: 'avatar-show avatar-show-small' %>
-              <% else %>
-                <span>
-                  <%= image_tag user.avatar.url(:large), class: 'avatar-show avatar-show-small'%>
-                </span>
-              <% end %>
-              <%= link_to user.username, profile_path(user.id), class: "comments" %>  <%= comment.body %> 
-            </p>
+            <%= render 'profile_link', user: user %> 
             <% if policy(comment).destroy? %>
-              <p style="text-align:right; margin:0px">
-                <%= 
-                  link_to post_comment_path(@post, comment), method: :delete, 
-                  data: {confirm: "Delete comment?"}, class: "btn btn-sm btn-outline-pink no-margin" do %>
-                    <i style="font-size:12px;text-align:right" class="bi-trash" ></i>  
-                <% end %>
-              </p>  
+              <%= 
+                link_to post_comment_path(@post, comment), method: :delete, 
+                data: {confirm: "Delete comment?"}, class: "btn btn-sm btn-outline-pink no-margin" do %>
+                  <i style="font-size:12px;text-align:right" class="bi-trash" ></i>  
+              <% end %>
             <% end %>
+            <p> <%= comment.body %> </p>
+            </p>
           </div>
         </div>
       <% end %>

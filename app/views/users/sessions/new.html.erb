@@ -1,7 +1,7 @@
 <div class="card mb-4 rounded-3 shadow-sm">
   <div class="card-body">
       <center class="profile-name"> 
-        Sign in
+        Log in
       </center>
       <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
 
@@ -14,13 +14,15 @@
           <%= f.password_field :password, :class => 'form-control' %>
         </p>
         
-        <% if devise_mapping.rememberable? %>
+      <!--  <% if devise_mapping.rememberable? %>
           <div class="field">
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
           </div>
         <% end %>
         <br>
+      
+        -->
         <div class="actions">
           <%= f.submit "Log in", class: "btn btn-lg btn-outline-pink" %>
         </div>

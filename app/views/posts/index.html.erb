@@ -3,8 +3,10 @@
   <div class="card mb-4 rounded-3 shadow-sm" style="margin-top: 10%">
     <div class="card-body">
       <center class="profile-name"> 
-        <span style="font-family: cursive; font-size: 45px">Welcome to <b> PinkSta </b> !</span> 
-        <br>
+        Welcome to 
+        <img class="logo" src='https://github.com/sharedmean/ruby-course-project/blob/master/app/assets/images/logo.png?raw=true'> 
+        </img>  
+        !<br>
         <hr> 
         <span style="font-size:20px"> 
           You don't have your feed yet, but it's easy to fix! <br> 
@@ -12,9 +14,11 @@
           or <br>
           Enter your friend's username in the text field above and then click Search icon 
           <hr>
-          <br>
-          <span style="font-family: cursive; font-size: 45px">Have fun in <b> PinkSta </b> !</span> <br>
         </span>
+        Have fun in 
+        <img class="logo" src='https://github.com/sharedmean/ruby-course-project/blob/master/app/assets/images/logo.png?raw=true'> 
+        </img>  
+        !<br>
       </center>
     </div>
   </div>
@@ -23,14 +27,7 @@
     <div class="card mb-4 rounded-3 shadow-sm">
       <div class="card-body">
         <p class="fw-bold">
-          <% if post.user.avatar.url.nil? %>
-            <%= text_field_tag "", 'No avatar', class: 'avatar-show avatar-show-small' %>
-          <% else %>
-            <span>
-              <%= image_tag post.user.avatar.url(:large), class: 'avatar-show avatar-show-small'%>
-            </span>
-          <% end %>
-          <%= link_to post.user.username, profile_path(post.user.id), class: "no-decoration" %>   
+          <%= render 'profile_link', user: post.user %> 
         </p>    
         <p><%= image_tag post.picture.url(:large), class: 'content-img img-show', alt: post.title if post.picture? %></p>
         <b> <%= post.title %> </b> 

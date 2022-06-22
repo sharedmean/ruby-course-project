@@ -1,0 +1,10 @@
+<%= link_to profile_path(user.id), class: "no-decoration" do %> 
+    <% if user.avatar.url.nil? %>
+      <%= text_field_tag "", 'No avatar', class: 'avatar-show avatar-show-small' %>
+    <% else %>
+      <span>
+        <%= image_tag user.avatar.url(:large), class: 'avatar-show avatar-show-small'%>
+      </span>
+    <% end %>
+    <%= user.username %>
+<% end %>
