@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     
     if(@post.save)
-      redirect_to @post # calls 'show'
+      redirect_to post_path(@post) # calls 'show'
     else
       render :new # rerender the current page
     end
