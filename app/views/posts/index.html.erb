@@ -33,6 +33,7 @@
           <%= link_to post.user.username, profile_path(post.user.id), class: "no-decoration" %>   
         </p>    
         <p><%= image_tag post.picture.url(:large), class: 'content-img img-show', alt: post.title if post.picture? %></p>
+        <b> <%= post.title %> </b> 
         <p> <%= post.body %> </p>
         
         <hr>

@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
   body {
     /* 16, 79 are for dark theme */
     background: url('https://github.com/sharedmean/ruby-course-project/blob/master/app/assets/images/86.jpg?raw=true') !important; /* 7,9,10,14,15, 55, 56, 65, 69, 73, 766, 86 images are good */
@@ -172,3 +172,8 @@
     margin: 0px !important;
   }
   
+  @media (max-width: 480px) {
+    .header {
+      padding: 0px !important;
+      }
+   }
