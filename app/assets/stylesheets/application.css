@@ -13,26 +13,26 @@
  *= require_tree .
  *= require_self
  */
-
+  @media (max-width: 600px) {
+    .header {
+      padding: 0px !important;
+    }
+  }
+  @media (min-width: 600px) {
+    .header {
+      background-color: #fffffff1;
+      border-radius: 5px;
+      padding-left: 20%;
+      padding-right: 20%
+    }
+  }
   body {
     /* 16, 79 are for dark theme */
     background: url('https://github.com/sharedmean/ruby-course-project/blob/master/app/assets/images/86.jpg?raw=true') !important; /* 7,9,10,14,15, 55, 56, 65, 69, 73, 766, 86 images are good */
     background-size: 1920px auto !important;
   }
-  
-  .text-center {
-    text-align: center;
-  }
-  .profile-circle {
-    border: 1px solid #ee538d;
-    width: 115px;
-    border-radius: 7px;
-    font-size: 16px;
-    color: #ee538d;
-    padding-top:10px;
-    text-align: center;
-    margin-right: 20px;
-  }
+
+   /* avatars */
   .avatar-show {
     border-radius: 50%;
     border: 1px solid #ee538d;
@@ -54,16 +54,36 @@
     height: 200px;
     font-size:30px;
   }
+
+  .text-center {
+    text-align: center;
+  }
+
+  /* profile stuff */
+  .profile-circle {
+    border: 1px solid #ee538d;
+    width: 115px;
+    border-radius: 7px;
+    font-size: 16px;
+    color: #ee538d;
+    padding-top:10px;
+    text-align: center;
+    margin-right: 20px;
+  }
   .profile-name {
     font-size:34px;
     margin-top:10px; 
     margin-bottom:20px; 
     color: #ee538d;
   }
+
+  /* pink devider (uses everywhere) */
   hr {
     color: #ff005d;
     height: 2px !important;
   }
+
+  /* for links */
   .no-decoration {
     text-decoration: none;
     color: black;
@@ -71,6 +91,21 @@
     vertical-align: middle;
     font-weight: 500;
   } 
+  .text {
+    font-size: 24px;
+    color: #ee538d;
+    text-decoration: none;
+    margin-left:30px;
+  } 
+  a {
+    color: #ee538d;
+    text-decoration: none !important;
+  }
+  a:hover {
+    color: black;
+  }
+
+  /* comments */
   .comments {
     text-decoration: none;
     color: #ee538d;
@@ -78,12 +113,8 @@
   .comments:hover, .no-decoration:hover {
     color: #ee538d;
   }
-  .text {
-    font-size: 24px;
-    color: #ee538d;
-    text-decoration: none;
-    margin-left:30px;
-  }  
+  
+  /* search-field */
   .search {
     width:300px !important;
     display: inline !important;
@@ -105,6 +136,8 @@
     border: 2px solid  #ee538d !important;
     color: #ee538d;
   }
+
+  /* all buttons */
   .btn-outline-pink {
     color: #ee538d;
     border-color: #ee538d;
@@ -128,6 +161,8 @@
   .btn-pink:hover {
     border-color: black;
   }
+
+  /* content */
   .content {
     max-width: 900px !important;
   }
@@ -139,14 +174,8 @@
     max-width: 270px !important;
     border-radius:3px;
   }
-  a {
-    color: #ee538d;
-    text-decoration: none !important;
-  }
-  a:hover {
-    color: black;
-  }
 
+  /* other */
   .alert{
     background-color: #f2dede;
     border-color: #ebccd1;
@@ -167,4 +196,3 @@
     margin: 0px !important;
   }
   
- 

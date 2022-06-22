@@ -8,6 +8,10 @@ gem 'rails', '~> 5.2.1'
 gem 'devise' # for authentification
 gem 'i18n'
 gem 'pundit' # for authorization
+# RSPEC
+gem 'rspec-rails'
+gem 'factory_bot_rails'
+gem 'ffaker'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
