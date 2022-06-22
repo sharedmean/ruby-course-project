@@ -16,6 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   # GET /resource/edit
   def edit
+    current_user.picture.remove!
     super
   end
   

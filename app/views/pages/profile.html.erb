@@ -50,33 +50,35 @@
               <% end %>
             </div>
             <hr> 
-            <div class="row" style="margin-top:30px; margin-bottom:30px;">
-              <div class="col-lg-4 profile-circle">      
-                <p class="text-center">
-                  <i class="bi-bookmark-heart" style="font-style: normal; font-size:24px;"> 
-                    <%= user.following_follows.size %>
-                  </i>
-                  <br>
-                  followings
-                </p>
+            <div class="row" style="margin-top:30px; margin-bottom:30px; justify-content:space-around">
+              <div class="col-lg-3 ml-7">      
+                <%= form_tag(search_path, method: :get) do %>
+                  <input type="hidden" name="user_follower_id" value="<%= user.id %>">
+                  <%= button_tag( :class => "btn btn-lg btn-outline-pink profile-circle", type: 'submit', name: nil,) do %>
+                    <i class="bi-bookmark-heart" style="font-style: normal; font-size:24px;"> 
+                      <%= user.following_follows.size %>
+                    </i>
+                    followings
+                  <% end %>
+                <% end %>  
               </div>
-              <div class="col-lg-4 profile-circle">
-                <p class="text-center">
+              <div class="col-lg-3 profile-circle">
                   <i class="bi-instagram" style="font-style: normal; font-size:24px;"> 
                     <%= @post.size %>
                   </i> 
                   <br>
                   posts
-                </p>
               </div>
-              <div class="col-lg-4 profile-circle">
-                <p class="text-center">
-                  <i class="bi-person-check" style="font-style: normal; font-size:24px;"> 
-                    <%= user.follower_follows.size %>
-                  </i>
-                  <br>
-                  followers
-                </p>
+              <div class="col-lg-3">      
+                <%= form_tag(search_path, method: :get) do %>
+                  <input type="hidden" name="user_following_id" value="<%= user.id %>">
+                  <%= button_tag( :class => "btn btn-lg btn-outline-pink profile-circle", type: 'submit', name: nil,) do %>
+                    <i class="bi-person-check" style="font-style: normal; font-size:24px;"> 
+                      <%= user.follower_follows.size %>
+                    </i>
+                    followers
+                  <% end %>
+                <% end %>  
               </div>
             </div>  
           </div>

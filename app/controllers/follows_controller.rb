@@ -1,6 +1,8 @@
 class FollowsController < ApplicationController
   def create
+
     @follow = Follow.new(follow_params)
+    authorize @follow
 
     if !@follow.save
       flash[:notice] = @follow.errors.full_messages.to_sentence

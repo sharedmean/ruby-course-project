@@ -13,13 +13,14 @@
  *= require_tree .
  *= require_self
  */
-
+ 
   body {
-    background: url('/assets/69.jpg') !important; /* 7,9,10,14,15, 55, 56, 65 images are good */
+    /* 16, 79 are for dark theme */
+    background: url('/assets/86.jpg') !important; /* 7,9,10,14,15, 55, 56, 65, 69, 73, 766, 86 images are good */
     background-size: 1920px auto !important;
   }
   .header {
-  background-color: #ffffffda;
+  background-color: #fffffff1;
   border-radius: 5px;
   padding-left: 20%;
   padding-right: 20%
@@ -30,10 +31,12 @@
   .profile-circle {
     border: 1px solid #ee538d;
     width: 115px;
-    border-radius: 7%;
-    margin: 0 auto;
-    padding-top:10px;
+    border-radius: 7px;
+    font-size: 16px;
     color: #ee538d;
+    padding-top:10px;
+    text-align: center;
+    margin-right: 20px;
   }
   .avatar-show {
     border-radius: 50%;
@@ -113,7 +116,11 @@
     margin-right: 20px;
     text-decoration: none !important;
   }
-  .btn-outline-pink:hover {
+  .btn-profile {
+    color: #ee538d;
+    text-decoration: none !important;
+  }
+  .btn-outline-pink:hover, .btn-profile:hover {
     color: white;
     background-color: #ee538d;
   }
@@ -161,5 +168,7 @@
   .no-border{
     border: none !important;
   }
-  
+  .no-margin{
+    margin: 0px !important;
+  }
   

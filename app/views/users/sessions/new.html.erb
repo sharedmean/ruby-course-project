@@ -1,6 +1,8 @@
 <div class="card mb-4 rounded-3 shadow-sm">
   <div class="card-body">
-      <center><h2>Sign in</h2></center>
+      <center class="profile-name"> 
+        Sign in
+      </center>
       <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
 
         <p>
@@ -18,7 +20,7 @@
             <%= f.label :remember_me %>
           </div>
         <% end %>
-
+        <br>
         <div class="actions">
           <%= f.submit "Log in", class: "btn btn-lg btn-outline-pink" %>
         </div>

@@ -1,14 +1,18 @@
 
 <% if @posts.empty? %>
-  <div class="card mb-4 rounded-3 shadow-sm">
+  <div class="card mb-4 rounded-3 shadow-sm" style="margin-top: 10%">
     <div class="card-body">
       <center class="profile-name"> 
-        <span style="font-family: cursive; font-size: 45px">Welcome to <b> PinkSta </b> !</span> <br>
+        <span style="font-family: cursive; font-size: 45px">Welcome to <b> PinkSta </b> !</span> 
+        <br>
+        <hr> 
         <span style="font-size:20px"> 
-          You don't have your feed yet, but it's easy to fix! <br> <br>
-          Click on Search icon above to see all <b style="font-family: cursive; font-size: 30px"> PinkSta </b> users <br>
+          You don't have your feed yet, but it's easy to fix! <br> 
+            Click on Search icon above to see all <b style="font-family: cursive; font-size: 30px"> PinkSta </b> users <br>
           or <br>
-          Enter the username of your friend in the text field and then click Search icon <br><br>
+          Enter your friend's username in the text field above and then click Search icon 
+          <hr>
+          <br>
           <span style="font-family: cursive; font-size: 45px">Have fun in <b> PinkSta </b> !</span> <br>
         </span>
       </center>
@@ -62,21 +66,7 @@
                 <% end %>   
               </div>
             <% end %>
-          </div>
-          <% if policy(post).edit? %>
-            <div class="col-md-1 text-start">
-              <%= link_to edit_post_path(post), class: "btn btn-lg btn-outline-pink" do %>
-                <i class="bi-pen" ></i>  
-              <% end %>
-            </div>
-            <div class="col-md-1 text-start">
-              <%= link_to post_path(post),method: :delete, 
-              data: {confirm: "Delete post?"}, class: "btn btn-lg btn-outline-pink" do %>
-                <i class="bi-trash" ></i>  
-              <% end %>
-            </div>
-          <% end%>
-        
+          </div>        
         </div>
       </div>
     </div>

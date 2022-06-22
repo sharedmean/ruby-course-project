@@ -10,16 +10,20 @@
       <% end %>
       <%= link_to @post.user.username, profile_path(@post.user.id), class: "no-decoration" %> 
     </p>  
-    <p><%= image_tag @post.picture.url(:large), class: 'content-img img-show', alt: @post.title if @post.picture? %></p>
+    <p><%= image_tag @post.picture.url(:large), class: 'content-img img-show', alt: @post.title if @post.picture? %></p> 
+    <b> <%= @post.title %> </b> 
     <p> <%= @post.body %> </p>
     <% if user_signed_in? %>
-      <% if current_user.id==User.find(@post.user_id).id %>
+      <% if policy(@post).edit? %>
         <hr>
-        <%= link_to "Edit", edit_post_path(@post), :class => "btn btn-lg btn-outline-pink" %>
+        <%= link_to edit_post_path(@post), class: "btn btn-lg btn-outline-pink" do %>
+          <i class="bi-pen" ></i>  
+        <% end %>
         <%= 
-          link_to "Delete", post_path(@post), method: :delete, 
-          data: {confirm: "Delete post?"}, :class => "btn btn-lg btn-pink" 
-        %>
+          link_to post_path(@post), method: :delete, 
+          data: {confirm: "Delete post?"}, class: "btn btn-lg btn-outline-pink" do %>
+            <i class="bi-trash" ></i>  
+        <% end %>
       <% end %>
     <% end %>
     <hr>
@@ -38,6 +42,15 @@
               <% end %>
               <%= link_to user.username, profile_path(user.id), class: "comments" %>  <%= comment.body %> 
             </p>
+            <% if policy(comment).destroy? %>
+              <p style="text-align:right; margin:0px">
+                <%= 
+                  link_to post_comment_path(@post, comment), method: :delete, 
+                  data: {confirm: "Delete comment?"}, class: "btn btn-sm btn-outline-pink no-margin" do %>
+                    <i style="font-size:12px;text-align:right" class="bi-trash" ></i>  
+                <% end %>
+              </p>  
+            <% end %>
           </div>
         </div>
       <% end %>
@@ -49,6 +62,7 @@
         </p>  
         <p>
             <%= f.submit("Send", {:class => 'btn btn-lg btn-outline-pink'}) %> <!-- submit calls create method -->
+            <%= link_to "Back", :back, class: 'btn btn-lg btn-outline-pink'%>
         </p>
       <% end %>
     </div>
