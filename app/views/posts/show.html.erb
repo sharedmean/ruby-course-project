@@ -13,19 +13,48 @@
     <p><%= image_tag @post.picture.url(:large), class: 'content-img img-show', alt: @post.title if @post.picture? %></p> 
     <b> <%= @post.title %> </b> 
     <p> <%= @post.body %> </p>
-    <% if user_signed_in? %>
-      <% if policy(@post).edit? %>
-        <hr>
-        <%= link_to edit_post_path(@post), class: "btn btn-lg btn-outline-pink" do %>
-          <i class="bi-pen" ></i>  
+    <hr>
+    <div class="row">
+      <div class="col-md-1 text-start" style="margin-left:10px">
+        <% like = current_user.likes.find_by(post: @post) %>
+        <% if like.nil? %>
+          <%= form_with model: @like, url: likes_path do |f| %>   
+            <input type="hidden" name="like[post_id]" value="<%= @post.id %>">
+            <%= hidden_field :like, { :value => @like } %>
+            <div class="row">
+              <%= button_tag( :class => "btn btn-lg btn-outline-pink") do %>
+                <i class="bi-heart" style="font-style: normal"> 
+                  <%= Like.where(post_id: @post.id).count %> 
+                </i>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="row">
+            <%= link_to like_path(like), method: :delete, remote: true, class: "btn btn-lg btn-outline-pink" do %>
+              <i class="bi-heart-fill" style="font-style: normal">
+                <%= Like.where(post_id: @post.id).count %>
+              </i>  
+            <% end %>   
+          </div>
         <% end %>
-        <%= 
-          link_to post_path(@post), method: :delete, 
-          data: {confirm: "Delete post?"}, class: "btn btn-lg btn-outline-pink" do %>
-            <i class="bi-trash" ></i>  
+      </div>    
+      <% if user_signed_in? %>
+        <% if policy(@post).edit? %>
+          <div class="col-md-1 text-start">    
+            <%= link_to edit_post_path(@post), class: "btn btn-lg btn-outline-pink" do %>
+              <i class="bi-pen" ></i>  
+            <% end %>
+          </div>
+          <div class="col-md-1 text-start">
+            <%= link_to post_path(@post), method: :delete, 
+                data: {confirm: "Delete post?"}, class: "btn btn-lg btn-outline-pink" do %>
+              <i class="bi-trash" ></i>  
+            <% end %>
+          </div>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
     <hr>
     <div class="card-body">
       <% @post.comments.each do |comment| %>
