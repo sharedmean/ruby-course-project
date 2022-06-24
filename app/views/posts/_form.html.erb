@@ -1,5 +1,5 @@
 <!-- we need this kinda pattern because we have more than 1 similar forms -->
-
+<div class="new-post">
 <%= form_for @post, html: { multipart: true } do |f| %>
   <% if @post.errors.any? %>
     <% @post.errors.full_messages.each do |msg| %>
@@ -25,7 +25,8 @@
   </p>
 
   <p>
-    <%= f.submit({:class => 'btn btn-lg btn-outline-pink'}) %>
+    <%= f.submit({:class => 'btn btn-lg btn-outline-pink'}, {:id => 'new'}) %>
     <%= link_to 'Back', posts_path, :class => "btn btn-lg btn-outline-pink" %>
   </p>
 <% end %>
+</div>

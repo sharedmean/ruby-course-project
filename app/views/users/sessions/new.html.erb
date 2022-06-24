@@ -1,5 +1,5 @@
 <div class="card mb-4 rounded-3 shadow-sm">
-  <div class="card-body">
+  <div class="card-body" id="session">
       <center class="profile-name"> 
         Log in
       </center>
@@ -11,7 +11,7 @@
         </p>
         <p>
           Password: <br>
-          <%= f.password_field :password, :class => 'form-control' %>
+          <%= f.password_field :password, :class => 'form-control password' %> 
         </p>
         
       <!--  <% if devise_mapping.rememberable? %>

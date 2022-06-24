@@ -1,4 +1,5 @@
 require 'simplecov' # that's fot text %
+
 SimpleCov.start
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
@@ -27,6 +28,12 @@ require 'rspec/rails'
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
+
+# for login in capybara
+RSpec.configure do |config|
+  config.include Warden::Test::Helpers
+end
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e

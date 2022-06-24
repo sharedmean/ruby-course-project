@@ -3,6 +3,6 @@ FactoryBot.define do
     association :user
     title {'My first post'}
     body {'Hi erevyone! This is my first post!'}
-    picture { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/pixel.jpg')) }    
+    picture { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/pixel.png')) }    
   end
 end
