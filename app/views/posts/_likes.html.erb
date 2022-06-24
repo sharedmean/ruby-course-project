@@ -1,0 +1,27 @@
+<div class="col-md-1 text-start" style="margin-left:10px">
+  <% like = current_user.likes.find_by(post: post) %>
+  <% if like.nil? %>
+    <%= form_with model: @like, url: likes_path do |f| %>   
+      <input type="hidden" name="like[post_id]" value="<%= post.id %>">
+      <%= hidden_field :like, { :value => @like } %>
+      <div class="row">
+        <%= button_tag( :class => "btn btn-lg btn-outline-pink") do %>
+          <i class="bi-heart" style="font-style: normal"> 
+            <%= Like.where(post_id: post.id).count %> 
+          </i>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    
+   <!-- likes' size -->
+
+    <div class="row">
+      <%= link_to like_path(like), method: :delete, remote: true, class: "btn btn-lg btn-outline-pink" do %>
+        <i class="bi-heart-fill" style="font-style: normal">
+          <%= Like.where(post_id: post.id).count %>
+        </i>  
+      <% end %>   
+    </div>
+  <% end %>
+</div>    

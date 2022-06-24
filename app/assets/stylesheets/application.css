@@ -56,7 +56,9 @@
   .no-avatar {
     padding-top: 40%;
   }
-
+  .cursor-pointer {
+    cursor: pointer;
+  }
   .text-center {
     text-align: center;
   }

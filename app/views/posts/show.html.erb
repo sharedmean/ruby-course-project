@@ -1,37 +1,26 @@
 <div class="card mb-4 rounded-3 shadow-sm">
   <div class="card-body">
+
+    <!-- link to post's author profile -->
+
     <p class="fw-bold">
       <%= render 'profile_link', user: @post.user %>
     </p>  
+
+    <!-- post -->
+
     <p><%= image_tag @post.picture.url(:large), class: 'content-img img-show', alt: @post.title if @post.picture? %></p> 
     <b> <%= @post.title %> </b> 
     <p> <%= @post.body %> </p>
     <hr>
     <div class="row">
-      <div class="col-md-1 text-start" style="margin-left:10px">
-        <% like = current_user.likes.find_by(post: @post) %>
-        <% if like.nil? %>
-          <%= form_with model: @like, url: likes_path do |f| %>   
-            <input type="hidden" name="like[post_id]" value="<%= @post.id %>">
-            <%= hidden_field :like, { :value => @like } %>
-            <div class="row">
-              <%= button_tag( :class => "btn btn-lg btn-outline-pink") do %>
-                <i class="bi-heart" style="font-style: normal"> 
-                  <%= Like.where(post_id: @post.id).count %> 
-                </i>
-              <% end %>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="row">
-            <%= link_to like_path(like), method: :delete, remote: true, class: "btn btn-lg btn-outline-pink" do %>
-              <i class="bi-heart-fill" style="font-style: normal">
-                <%= Like.where(post_id: @post.id).count %>
-              </i>  
-            <% end %>   
-          </div>
-        <% end %>
-      </div>    
+
+      <!-- likes button -->
+
+      <%= render 'likes', post: @post %>
+
+      <!-- edit and delete buttons -->
+
       <% if user_signed_in? %>
         <% if policy(@post).edit? %>
           <div class="col-md-1 text-start">    
@@ -49,13 +38,22 @@
       <% end %>
     </div>
     <hr>
+
+    <!-- comments -->
+
     <div class="card-body">
       <% @post.comments.each do |comment| %>
         <div class="card mb-2 rounded-5 shadow-sm">
           <div style="padding:10px">
             <% user = User.find(comment.user_id) %>
             <p> 
+
+            <!-- link to post's author profile -->
+
             <%= render 'profile_link', user: user %> 
+
+            <!-- destroy comment button -->
+
             <% if policy(comment).destroy? %>
               <%= 
                 link_to post_comment_path(@post, comment), method: :delete, 
@@ -63,12 +61,17 @@
                   <i style="font-size:12px;text-align:right" class="bi-trash" ></i>  
               <% end %>
             <% end %>
+
+            <!-- comment -->
+
             <p> <%= comment.body %> </p>
             </p>
           </div>
         </div>
       <% end %>
-    
+      
+      <!-- new comment form -->
+
       <%= form_with model: @post.comments.build, url: [@post, @post.comments.build] do |f| %>   
         <p>
             Comment <br>

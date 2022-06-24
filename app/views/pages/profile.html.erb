@@ -2,9 +2,12 @@
   <div class="card-body">  
       <% user =  User.find(params[:id]) %>
         <div class="row" >
+
+          <!-- avatar -->
+
           <div class="col-lg-3 text-start">
             <% if user.avatar.url.nil? %>
-              <p class="avatar-show avatar-show-big no-avatar">
+              <p class="avatar-show avatar-show-big no-avatar cursor-pointer">
                 No avatar
               </p>
             <% else %>
@@ -15,11 +18,17 @@
           </div>
           <div class="col">
             <div class="row">
+
+              <!-- username -->
+
               <div class="col-md-6 text-end">
                 <span class="profile-name"> 
                   <%= user.username %> 
                 </span>
               </div>
+
+              <!-- follow/unfollow button -->
+
               <% if !(current_user.id==user.id) %>
                 <div class="col-lg-5 text-start">
                   <% follow = current_user.following_follows.find_by(following_id: user.id) %>
@@ -41,7 +50,10 @@
                     </div>
                   <% end %>
                 </div>
-              <% else %>  
+              <% else %> 
+
+                <!-- edit profile button -->
+
                 <div class="col-lg-5 text-start">
                   <button type="button" class="btn btn-lg btn-outline-pink">
                     <%= link_to 'Edit profile', edit_user_registration_path %>
@@ -51,6 +63,9 @@
             </div>
             <hr> 
             <div class="row" style="margin-top:30px; margin-bottom:30px; justify-content:space-around">
+
+              <!-- followings button -->
+
               <div class="col-lg-3 ml-7">      
                 <%= form_tag(search_path, method: :get) do %>
                   <input type="hidden" name="user_follower_id" value="<%= user.id %>">
@@ -62,6 +77,9 @@
                   <% end %>
                 <% end %>  
               </div>
+
+              <!-- posts' size -->
+
               <div class="col-lg-3 profile-circle">
                   <i class="bi-instagram" style="font-style: normal; font-size:24px;"> 
                     <%= @post.size %>
@@ -69,6 +87,9 @@
                   <br>
                   posts
               </div>
+
+              <!-- followers button -->
+
               <div class="col-lg-3">      
                 <%= form_tag(search_path, method: :get) do %>
                   <input type="hidden" name="user_following_id" value="<%= user.id %>">
@@ -85,6 +106,8 @@
         </div>
     <hr> 
     
+    <!-- user's posts -->
+
     <div class="card-body">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-2">
         <% @post.each do |post| %>
