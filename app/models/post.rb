@@ -14,12 +14,12 @@ class Post < ApplicationRecord
 
   private
 
-  def post_created_email
-    PostMailer.with(post: self).new_post_email.deliver
-  end
+  #def post_created_email
+  #  PostMailer.with(post: self).new_post_email.deliver
+  #end
 
-  def post_updated_email
-    PostMailer.with(post: self).edit_post_email.deliver
-  end
+  #def post_updated_email
+  #  PostMailer.with(post: self).edit_post_email.deliver
+  #end
 
 end

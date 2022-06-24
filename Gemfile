@@ -8,10 +8,7 @@ gem 'rails', '~> 5.2.1'
 gem 'devise' # for authentification
 gem 'i18n'
 gem 'pundit' # for authorization
-# RSPEC
-gem 'rspec-rails'
-gem 'factory_bot_rails'
-gem 'ffaker'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -74,6 +71,13 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # RSPEC
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'ffaker'
+  gem 'rails-controller-testing'
+  # test %
+  gem 'simplecov', require: false, group: :test
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

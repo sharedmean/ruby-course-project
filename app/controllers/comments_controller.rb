@@ -16,13 +16,8 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     authorize @comment
-    
-    if @comment.destroy
-      redirect_to @post
-    else
-      flash[:notice] = "An error has occured during your comment deletion. Please, try again."
-      redirect_to @post
-    end
+    @comment.destroy
+    redirect_to @post  
   end
 
   private def comment_params
