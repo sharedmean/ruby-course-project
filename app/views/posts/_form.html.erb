@@ -26,7 +26,8 @@
 
   <p>
     <%= f.submit({:class => 'btn btn-lg btn-outline-pink'}, {:id => 'new'}) %>
-    <%= link_to 'Back', posts_path, :class => "btn btn-lg btn-outline-pink" %>
+    <!-- <%= link_to 'Back', posts_path, :class => "btn btn-lg btn-outline-pink" %> -->
+    <%= link_to "Back", :back, class: 'btn btn-lg btn-outline-pink'%>
   </p>
 <% end %>
 </div>

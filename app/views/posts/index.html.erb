@@ -46,7 +46,7 @@
 
           <!-- comments button -->
 
-          <div class="col-md-1 text-start">
+          <div class="col-md-1 text-start mobile-button">
             <%= link_to post_path(post), class: "btn btn-lg btn-outline-pink" do %>
               <i class="bi-chat" ></i>  
             <% end %>
@@ -54,7 +54,9 @@
 
           <!-- likes button -->
 
-          <%= render 'likes', post: post %>
+          <div class="col-md-3 text-start mobile-button">      
+            <%= render 'likes', post: post %>
+          </div>
         </div>
       </div>
     </div>

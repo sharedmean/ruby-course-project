@@ -13,24 +13,18 @@
  *= require_tree .
  *= require_self
  */
-  @media (max-width: 600px) {
-    .header {
-      padding: 0px !important;
-    }
-  }
-  @media (min-width: 600px) {
-    .header {
-      background-color: #fffffff1;
-      border-radius: 5px;
-      padding-left: 20%;
-      padding-right: 20%
-    }
+ 
+  #header {
+    background-color: #fffffff1;
+    border-radius: 5px;
+    padding-left: 20%;
+    padding-right: 20%;
   }
   body {
     /* 16, 79 are for dark theme */
+    /* background-size: 1920px auto !important;*/
     /* background: url('https://github.com/sharedmean/ruby-course-project/blob/master/app/assets/images/56.jpg?raw=true') !important; /* 7,9,10,14,15, 55, 56, 65, 69, 73, 766, 86 images are good */
     background: rgba(0, 0, 0, 0) linear-gradient(to right, rgb(218, 226, 248), rgb(214, 164, 164)) repeat scroll 0% 0%;
-        /* background-size: 1920px auto !important;*/
   }
 
    /* avatars */

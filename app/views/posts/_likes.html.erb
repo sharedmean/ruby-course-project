@@ -1,7 +1,7 @@
-<div class="col-md-1 text-start" style="margin-left:10px">
+<div class="col-md-4 text-start  mobile-button" style="margin-left:10px">
   <% like = current_user.likes.find_by(post: post) %>
   <% if like.nil? %>
-    <%= form_with model: @like, url: likes_path do |f| %>   
+    <%= form_with model: @like, url: likes_path, method: :create do |f| %>   
       <input type="hidden" name="like[post_id]" value="<%= post.id %>">
       <%= hidden_field :like, { :value => @like } %>
       <div class="row">
@@ -14,7 +14,7 @@
     <% end %>
   <% else %>
     
-   <!-- likes' size -->
+   <!-- likes' deletion -->
 
     <div class="row">
       <%= link_to like_path(like), method: :delete, remote: true, class: "btn btn-lg btn-outline-pink" do %>

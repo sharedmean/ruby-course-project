@@ -578,9 +578,9 @@
           1,
           1,
           1,
-          30,
-          30,
-          30,
+          32,
+          32,
+          32,
           null,
           null
         ]
@@ -589,10 +589,10 @@
         "lines": [
           1,
           1,
-          61,
-          61,
-          61,
-          61,
+          63,
+          63,
+          63,
+          63,
           null,
           null
         ]
@@ -682,7 +682,7 @@
           null,
           null,
           1,
-          108,
+          124,
           null,
           null,
           null,
@@ -715,15 +715,15 @@
           null,
           null,
           1,
-          120,
+          128,
           null,
           null,
           null,
           null,
           null,
           1,
-          136,
-          136,
+          144,
+          144,
           null,
           null
         ]
@@ -849,8 +849,8 @@
           null,
           null,
           1,
-          23,
-          23,
+          27,
+          27,
           null,
           null
         ]
@@ -1169,8 +1169,8 @@
           1,
           1,
           null,
-          5,
-          5,
+          8,
+          8,
           null,
           null,
           null,
@@ -1179,7 +1179,7 @@
           null,
           null,
           1,
-          5,
+          7,
           null,
           null,
           1,
@@ -1209,11 +1209,11 @@
           null,
           null,
           1,
+          4,
           3,
-          2,
-          2,
-          2,
-          2,
+          3,
+          3,
+          3,
           null,
           null,
           1,
@@ -1222,7 +1222,7 @@
           null
         ]
       },
-      "/home/julia/ruby-course/ruby-course/insta/spec/features/post_page_spec.rb": {
+      "/home/julia/ruby-course/ruby-course/insta/spec/features/post_spec.rb": {
         "lines": [
           1,
           1,
@@ -1273,9 +1273,7 @@
           1,
           null,
           1,
-          null,
           1,
-          null,
           1,
           null,
           1,
@@ -1285,6 +1283,44 @@
           null,
           1,
           null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
           null,
           1,
           null,
@@ -1294,7 +1330,7 @@
           null
         ]
       },
-      "/home/julia/ruby-course/ruby-course/insta/spec/features/user_page_spec.rb": {
+      "/home/julia/ruby-course/ruby-course/insta/spec/features/user_spec.rb": {
         "lines": [
           1,
           1,
@@ -1502,7 +1538,7 @@
           1,
           null,
           1,
-          10,
+          13,
           null,
           null,
           1,
@@ -1586,8 +1622,8 @@
           1,
           null,
           1,
-          10,
-          10,
+          13,
+          13,
           null,
           null,
           1,
@@ -1595,11 +1631,11 @@
           null,
           null,
           1,
-          5,
+          7,
           null,
           null,
           1,
-          2,
+          3,
           null,
           null
         ]
@@ -1608,7 +1644,7 @@
         "lines": [
           1,
           1,
-          1,
+          4,
           null,
           null
         ]
@@ -1712,6 +1748,6 @@
         ]
       }
     },
-    "timestamp": 1656138306
+    "timestamp": 1656159477
   }
 }

@@ -13,29 +13,31 @@
     <b> <%= @post.title %> </b> 
     <p> <%= @post.body %> </p>
     <hr>
-    <div class="row">
+    <div class="col-md-3 text-start">
+      <div class="row">
 
-      <!-- likes button -->
+        <!-- likes button -->
 
-      <%= render 'likes', post: @post %>
+        <%= render 'likes', post: @post %>
 
-      <!-- edit and delete buttons -->
+        <!-- edit and delete buttons -->
 
-      <% if user_signed_in? %>
-        <% if policy(@post).edit? %>
-          <div class="col-md-1 text-start">    
-            <%= link_to edit_post_path(@post), class: "btn btn-lg btn-outline-pink" do %>
-              <i class="bi-pen" ></i>  
-            <% end %>
-          </div>
-          <div class="col-md-1 text-start">
-            <%= link_to post_path(@post), method: :delete, 
-                data: {confirm: "Delete post?"}, class: "btn btn-lg btn-outline-pink" do %>
-              <i class="bi-trash" ></i>  
-            <% end %>
-          </div>
+        <% if user_signed_in? %>
+          <% if policy(@post).edit? %>
+            <div class="col-md-3 text-start mobile-button">    
+              <%= link_to edit_post_path(@post), class: "btn btn-lg btn-outline-pink" do %>
+                <i class="bi-pen" ></i>  
+              <% end %>
+            </div>
+            <div class="col-md-3 text-start mobile-button">
+              <%= link_to post_path(@post), method: :delete, 
+                  data: {confirm: "Delete post?"}, class: "btn btn-lg btn-outline-pink" do %>
+                <i class="bi-trash" ></i>  
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
     <hr>
 
@@ -72,14 +74,18 @@
       
       <!-- new comment form -->
 
-      <%= form_with model: @post.comments.build, url: [@post, @post.comments.build] do |f| %>   
+      <%= form_with model: @post.comments.build, url: [@post, @post.comments.build], method: :create do |f| %>   
         <p>
-            Comment <br>
-            <%= f.text_area(:body, {:class => 'form-control'}) %>
+          Comment <br>
+          <%= f.text_area(:body, {:class => 'form-control'}) %>
         </p>  
         <p>
-            <%= f.submit("Send", {:class => 'btn btn-lg btn-outline-pink'}) %> <!-- submit calls create method -->
-            <%= link_to "Back", :back, class: 'btn btn-lg btn-outline-pink'%>
+          <%= f.submit("Send", {:class => 'btn btn-lg btn-outline-pink'}) %> <!-- submit calls create method -->
+          <% if params[:profile]=="profile_path" %>
+            <%= link_to "Back to profile", profile_path(@post.user), class: 'btn btn-lg btn-outline-pink'%>
+          <% else %>
+            <%= link_to 'Back to posts', posts_path, :class => "btn btn-lg btn-outline-pink" %> 
+          <% end %>
         </p>
       <% end %>
     </div>

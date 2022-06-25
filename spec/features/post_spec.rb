@@ -47,9 +47,7 @@ RSpec.describe 'Posts page', :js, type: :feature do
     visit posts_path 
 
     find("a[href='#{profile_path(user)}']").click
-
     find("a[href='#{post_path(post)}']").click
-
     find("a[href='#{edit_post_path(post)}']").click
     
     expect(page).to have_content("Edit Post")
@@ -61,6 +59,44 @@ RSpec.describe 'Posts page', :js, type: :feature do
     end
 
     expect(page).to have_content("Hi! It's my first post! Happy to be there!")
+
+    find("a[href='#{destroy_user_session_path}']").click
+  end
+
+  scenario 'user deletes post' do
+    user = FactoryBot.create(:user)
+    login_as(user)
+    post = FactoryBot.create(:post, user: user)
+
+    visit posts_path 
+
+    find("a[href='#{profile_path(user)}']").click
+    find("a[href='#{post_path(post)}']").click
+    find("a[href='#{post_path(post)}']").click
+
+    page.driver.browser.switch_to.alert.accept
+
+    find("a[href='#{profile_path(user)}']").click
+
+    expect(page).not_to have_content("a[href='#{post_path(post)}']")
+
+    find("a[href='#{destroy_user_session_path}']").click
+  end
+
+  scenario 'user cancels post deletion' do
+    user = FactoryBot.create(:user)
+    login_as(user)
+    post = FactoryBot.create(:post, user: user)
+
+    visit posts_path 
+
+    find("a[href='#{profile_path(user)}']").click
+    find("a[href='#{post_path(post)}']").click
+    find("a[href='#{post_path(post)}']").click
+
+    page.driver.browser.switch_to.alert.dismiss
+
+    expect(page).to have_content(post.title)
 
     find("a[href='#{destroy_user_session_path}']").click
   end

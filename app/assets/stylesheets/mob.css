@@ -1,0 +1,52 @@
+@media only screen and (max-width: 1500px) {
+  #header {
+    padding-left: 0% !important;
+    padding-right: 0% !important;
+    background-color: #fffffff1;
+  }
+  .mobile-button {
+    width: 80px;
+  }
+  .content-img {
+    max-width: 100% !important;
+  }
+  .avatar-show-big {
+    text-align: center;
+  }
+  .text-start {
+    text-align: center !important;
+  }
+  .text-end {
+    padding-top: 10px;
+    margin: 0 auto;
+  }
+  .no-avatar {
+    padding-top: 80px;
+    margin: 0 auto;
+  }
+  .profile-header {
+    width: 50%;
+    text-align: center !important;
+    font-size: 20px;
+  }
+  .text-decoration-none {
+    margin-right: 20px;
+  }
+  .col {
+    text-align: center;
+  }
+  .profile-name {
+    font-size: 20px;
+  }
+  .input-group {
+    margin-left: 0px !important;
+    margin-bottom: 20px;
+    width: 100% !important
+  }
+  .profile-bottons {
+    width: 30%;
+    text-align: center !important;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
