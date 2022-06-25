@@ -13,6 +13,9 @@
 # it.
 #
 require 'capybara/rspec'
+# Selenium settings
+require 'selenium-webdriver'
+Selenium::WebDriver::Firefox::Service.driver_path = "/home/julia/ruby-course/ruby-course/insta/geckodriver" 
 
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration

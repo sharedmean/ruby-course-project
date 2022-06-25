@@ -1,38 +1,22 @@
 require 'rails_helper'
 require 'spec_helper'
 
-# Selenium settings
-require 'selenium-webdriver'
-Selenium::WebDriver::Firefox::Service.driver_path = "/home/julia/ruby-course/ruby-course/insta/geckodriver" 
-
 # THE TROUBLES WERE:
 # It gives me a mistake that Selenium::Logger is only on 4.3.0 selenium version 
 # Selenium::Logger is available only on ruby 2.7.    amazing...
 # go to ruby 2.7................... install 4.3.0 selenium
-# have troubles with driver_path. Install chromedriver and add line [5]
+# have troubles with driver_path. Install chromedriver and add line [18] to spec_helper
 # run this code on 4.3.0 version
 # it gives me a mistake. I have to go to 2.53.4 version(decision from stackoverflow)
-# this returns me THE MISTAKE from line 10 (great!)
-# i go back to 4.3.0 selenium, add geckodriver-helper gem. 
+# this returns me THE MISTAKE from line [5] (great!............)
+# I go back to 4.3.0 selenium, add geckodriver-helper gem. 
 # and it FINALLY WORKS!
 # it was a joke... haha...
 # then a had troubles, 'cause I don't have chrome on my ubuntu
-# I've changed line [5] to Firefox and geckodriver, commented chromedriver-helper in gemfile
+# I've changed line [18] in spec_helper to Firefox and geckodriver, commented chromedriver-helper in gemfile
 
 RSpec.describe 'Posts page', :js, type: :feature do
 
-  scenario 'user signs in' do
-    visit signin_path 
-    
-    within('#new_user') do
-      fill_in 'user_email', :with => 'skor.julia@bk.ru'
-      fill_in 'user_password', :with => 'qwqwqw'
-    end
-    click_button 'commit'
-
-    expect(page).to have_content("Signed in successfully")
-  end
-  
   scenario 'user creates post' do
     login_as(FactoryBot.create(:user))
 
