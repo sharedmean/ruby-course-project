@@ -8,7 +8,7 @@
     font-size: 20px !important;
   }
 }
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1200px) {
   #header {
     padding-left: 5% !important;
     padding-right: 5% !important;
