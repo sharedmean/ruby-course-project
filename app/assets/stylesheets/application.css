@@ -114,7 +114,7 @@
   
   /* search-field */
   .search {
-    width:300px !important;
+    width:300px;
     display: inline !important;
     margin-top:20px;
     margin-right:0px;
