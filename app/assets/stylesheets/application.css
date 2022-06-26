@@ -171,7 +171,7 @@
     max-width: 900px !important;
   }
   .content-img {
-    max-width: 840px !important;
+    /* max-width: 840px !important; */
     border-radius:3px;
   }
   .content-img-profile {

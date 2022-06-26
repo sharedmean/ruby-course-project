@@ -1,11 +1,18 @@
+@media only screen and (max-width: 500px) {
+  #header {
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+  background-color: #fffffff1;
+  }
+  .profile-name {
+    font-size: 20px !important;
+  }
+}
 @media only screen and (max-width: 1500px) {
   #header {
-    padding-left: 0% !important;
-    padding-right: 0% !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
     background-color: #fffffff1;
-  }
-  .mobile-button {
-    width: 80px;
   }
   .content-img {
     max-width: 100% !important;
@@ -36,7 +43,7 @@
     text-align: center;
   }
   .profile-name {
-    font-size: 20px;
+    font-size: 26px !important;
   }
   .input-group {
     margin-left: 0px !important;
