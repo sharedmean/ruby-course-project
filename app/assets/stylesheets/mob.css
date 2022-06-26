@@ -10,6 +10,13 @@
 }
 @media only screen and (max-width: 1200px) {
   #header {
+  padding-left: 2% !important;
+  padding-right: 2% !important;
+  background-color: #fffffff1;
+  }
+}
+@media only screen and (max-width: 1500px) {
+  #header {
     padding-left: 5% !important;
     padding-right: 5% !important;
     background-color: #fffffff1;
